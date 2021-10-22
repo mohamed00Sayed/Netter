@@ -20,7 +20,7 @@ import com.sayed.netter.config.RootConfig.WebPackage;
 public class RootConfig {
   public static class WebPackage extends RegexPatternTypeFilter {
     public WebPackage() {
-      super(Pattern.compile("netter\\.web"));
+      super(Pattern.compile("com\\.sayed\\.netter\\.web"));
     }    
   }
 }
