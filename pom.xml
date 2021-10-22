@@ -23,6 +23,11 @@
 
   <dependencies>
 		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		<dependency>
 			<groupId>${springGID}</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>${springVersion}</version>
