@@ -20,7 +20,7 @@
     <div class="listTitle">
       <h1>Recent Nettles</h1>
       <ul class="nettleList">
-        <c:forEach items="${nettleList}" var="spittle" >
+        <c:forEach items="${nettleList}" var="nettle" >
           <li id="nettle_<c:out value="nettle.id"/>">
             <div class="nettleMessage"><c:out value="${nettle.message}" /></div>
             <div>
