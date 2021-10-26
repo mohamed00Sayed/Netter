@@ -20,7 +20,7 @@ import com.sayed.netter.web.NettleController;
 public class NettleControllerTest {
 
   @Test
-  public void shouldShowRecentSpittles() throws Exception {
+  public void shouldShowRecentNettles() throws Exception {
     List<Nettle> expectedNettles = createNettleList(20);
     NettleRepository mockRepository = mock(NettleRepository.class);
     when(mockRepository.findNettles(Long.MAX_VALUE, 20))
@@ -39,7 +39,7 @@ public class NettleControllerTest {
   }
 
   @Test
-  public void shouldShowPagedSpittles() throws Exception {
+  public void shouldShowPagedNettles() throws Exception {
     List<Nettle> expectedNettles = createNettleList(50);
     NettleRepository mockRepository = mock(NettleRepository.class);
     when(mockRepository.findNettles(238900, 50))
@@ -58,7 +58,7 @@ public class NettleControllerTest {
   }
   
   @Test
-  public void testSpittle() throws Exception {
+  public void testNettle() throws Exception {
 	Nettle expectedNettle = new Nettle("Hello", new Date());
     NettleRepository mockRepository = mock(NettleRepository.class);
     when(mockRepository.findOne(12345)).thenReturn(expectedNettle);
@@ -73,7 +73,7 @@ public class NettleControllerTest {
   }
 
   @Test
-  public void saveSpittle() throws Exception {
+  public void saveNettle() throws Exception {
     NettleRepository mockRepository = mock(NettleRepository.class);
     NettleController controller = new NettleController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller).build();
