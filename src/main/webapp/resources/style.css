@@ -1,0 +1,33 @@
+body {
+	font-family: sans-serif;
+}
+
+.nettleList h1 {
+	font-size: 16pt;
+}
+
+.nettleList ul {
+	list-style: none;
+	margin-left: 0px;
+	padding-left: 0px;
+} 
+
+.nettleList ul li:first-child {
+	border-top: 0px;
+} 
+
+.nettleList ul li {
+	border-top: 1px solid #cccccc;
+} 
+
+.nettleTime {
+	font-size: 8pt;
+}
+
+.nettleLocation {
+	font-size: 8pt;
+}
+
+.nettleForm h1 {
+	font-size: 16pt;
+}
