@@ -44,8 +44,8 @@ public class NetterController {
   
   @RequestMapping(value="/{username}", method=GET)
   public String showNetterProfile(@PathVariable String username, Model model) {
-    Netter spitter = netterRepository.findByUsername(username);
-    model.addAttribute(spitter);
+    Netter netter = netterRepository.findByUsername(username);
+    model.addAttribute(netter);
     return "profile";
   }
   
