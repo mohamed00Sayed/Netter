@@ -10,7 +10,7 @@
   <body>
     <h1>Welcome to Netter</h1>
 
-    <a href="<c:url value="/tweets" />">Tweets</a> | 
+    <a href="<c:url value="/nettles" />">Nettles</a> | 
     <a href="<c:url value="/netter/register" />">Register</a>
   </body>
 </html>
