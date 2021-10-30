@@ -3,13 +3,14 @@ package com.sayed.netter.config;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
+@ComponentScan("com.sayed.netter.data")
 public class DataConfig {
 
   @Bean
@@ -21,8 +22,8 @@ public class DataConfig {
   }
   
   @Bean
-  public JdbcOperations jdbcTemplate(DataSource dataSource) {
-    return new JdbcTemplate(dataSource);
+  public JdbcTemplate getJdbcTemplate() {
+      return new JdbcTemplate(dataSource());
   }
 
 }
