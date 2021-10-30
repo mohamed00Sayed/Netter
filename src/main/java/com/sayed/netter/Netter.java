@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import jakarta.validation.constraints.Email;
+import javax.validation.constraints.Email;
 
 public class Netter {
 
