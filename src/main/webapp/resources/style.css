@@ -31,3 +31,13 @@ body {
 .nettleForm h1 {
 	font-size: 16pt;
 }
+div.errors {
+background-color: #ffcccc;
+border: 2px solid red;
+}
+.error{
+	color: red;
+}
+input.error{
+	background-color: #ffcccc;
+}
