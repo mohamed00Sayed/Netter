@@ -9,16 +9,16 @@
   </head>
   <body>
     <div class="nettleForm">
-      <h1>Net it out...</h1>
+      <h1><s:message code="netter.slogan"/></h1>
       <form method="POST" name="NetttleForm">
         <input type="hidden" name="latitude">
         <input type="hidden" name="longitude">
         <textarea name="message" cols="80" rows="5"></textarea><br/>
-        <input type="submit" value="Add" />
+        <input type="submit" value='<s:message code="netter.add"/>' />
       </form>
     </div>
     <div class="listTitle">
-      <h1>Recent Nettles</h1>
+      <h1><s:message code="netter.recent"/></h1>
       <ul class="nettleList">
         <c:forEach items="${nettleList}" var="nettle" >
           <li id="nettle_<c:out value="nettle.id"/>">
@@ -33,7 +33,7 @@
       <c:if test="${fn:length(nettleList) gt 20}">
         <hr />
         <s:url value="/nettles?count=${nextCount}" var="more_url" />
-        <a href="${more_url}">Show more</a>
+        <a href="${more_url}"><s:message code="netter.mor"/></a>
       </c:if>
     </div>
   </body>
