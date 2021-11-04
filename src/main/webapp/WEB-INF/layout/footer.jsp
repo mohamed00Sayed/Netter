@@ -1,0 +1,1 @@
+Copyright &copy; Mohammad Sayed
