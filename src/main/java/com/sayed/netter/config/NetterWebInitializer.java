@@ -27,7 +27,7 @@ public class NetterWebInitializer extends AbstractAnnotationConfigDispatcherServ
 
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		registration.setMultipartConfig(new MultipartConfigElement("/tmp/netter/uploads"));
+		registration.setMultipartConfig(new MultipartConfigElement("/"));
 	}
 
 }

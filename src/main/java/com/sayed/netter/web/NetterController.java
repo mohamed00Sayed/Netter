@@ -2,6 +2,9 @@ package com.sayed.netter.web;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sayed.netter.Netter;
 import com.sayed.netter.data.NetterRepository;
@@ -33,12 +38,22 @@ public class NetterController {
   
   @RequestMapping(value="/register", method=POST)
   public String processRegistration(
+	  @RequestPart("profilePicture") MultipartFile profilePicture,	  
       @Valid Netter netter, 
       Errors errors) {
     if (errors.hasErrors()) {
       return "registerForm";
     }
-    
+    try {
+		profilePicture.transferTo(
+				new File("/" + profilePicture.getOriginalFilename()));
+	} catch (IllegalStateException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     netterRepository.save(netter);
     return "redirect:/netter/" + netter.getUsername();
   }
