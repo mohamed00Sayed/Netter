@@ -40,7 +40,8 @@ public class NetterController {
   public String processRegistration(
 	  @RequestPart("profilePicture") MultipartFile profilePicture,	  
       @Valid Netter netter, 
-      Errors errors) {
+      Errors errors,
+      Model model) {
     if (errors.hasErrors()) {
       return "registerForm";
     }
@@ -55,7 +56,8 @@ public class NetterController {
 		e.printStackTrace();
 	}
     netterRepository.save(netter);
-    return "redirect:/netter/" + netter.getUsername();
+    model.addAttribute("username", netter.getUsername());
+    return "redirect:/netter/{username}";
   }
   
   @RequestMapping(value="/{username}", method=GET)
