@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +38,8 @@ public class NettleController {
   public String nettle(
       @PathVariable("nettleId") long nettleId, 
       Model model) {
-    model.addAttribute(nettleRepository.findOne(nettleId));
+	  Nettle nettle = nettleRepository.findOne(nettleId);
+	  model.addAttribute(nettle);
     return "nettle";
   }
 
@@ -46,6 +48,11 @@ public class NettleController {
     nettleRepository.save(new Nettle(null, form.getMessage(), new Date(), 
         form.getLongitude(), form.getLatitude()));
     return "redirect:/nettles";
+  }
+  
+  @ExceptionHandler(NettleNotFoundException.class)
+  public String handleNettleNotFound() {
+	  return "error/notFound";
   }
 
 }
