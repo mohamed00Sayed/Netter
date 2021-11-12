@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sayed.netter.Netter;
 import com.sayed.netter.data.NetterRepository;
@@ -41,7 +42,7 @@ public class NetterController {
 	  @RequestPart("profilePicture") MultipartFile profilePicture,	  
       @Valid Netter netter, 
       Errors errors,
-      Model model) {
+      RedirectAttributes model) {
     if (errors.hasErrors()) {
       return "registerForm";
     }
@@ -55,15 +56,18 @@ public class NetterController {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-    netterRepository.save(netter);
-    model.addAttribute("username", netter.getUsername());
+    Netter savedNetter = netterRepository.save(netter);
+    model.addAttribute("username", savedNetter.getUsername());
+    model.addFlashAttribute(savedNetter);    
     return "redirect:/netter/{username}";
   }
   
   @RequestMapping(value="/{username}", method=GET)
   public String showNetterProfile(@PathVariable String username, Model model) {
-    Netter netter = netterRepository.findByUsername(username);
-    model.addAttribute(netter);
+	if(!model.containsAttribute("netter")) {
+	    Netter netter = netterRepository.findByUsername(username);
+	    model.addAttribute(netter);
+	}
     return "profile";
   }
   
